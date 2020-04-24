@@ -12,15 +12,15 @@ root.resizable(width=False, height=False)
 # Расположить виджеты в главном окне
 # Запустить цикл обработки событий
 
+
 user_entry = Entry(root, width=20)
-user_entry.pack()
+user_entry.place(x=20, y=15)
 
 user_button = Button(root, text="Преобразовать")
-user_button.pack()
+user_button.place(x=30, y=45)
 
-user_label = Label(root, bg='black', fg='white', width=20)
-user_label.pack()
-
+user_label = Label(root, bg='black', fg='white', width=30, height=8)
+user_label.place(x=170, y=15)
 
 def sortingImput(event):
     text = user_entry.get()
@@ -29,13 +29,29 @@ def sortingImput(event):
 
 user_button.bind('<Button-1>', sortingImput)
 
-
-
-
-
-# btn1 = Button(text="СЕВЕР", background="#0000FF", foreground="#fff",
-#               pady="2", font="12", width=12)
-# btn1.pack(side=TOP)
-
-
 root.mainloop()
+
+
+############################################################
+'''
+
+! Object declaration:
+object_name = Object(master[, parameters])
+object_name.pack()
+object_name.place(x=10, y=10)
+
+! Object: Text or Entry
+(width=x, height=y, bg="", fg="", wrap=WORD)
+.get() - возвращает
+.insert() - вставляет
+.delete() - удаляет
+
+! Object: Button
+(text="user_text", width=x, height=y, bg="", fg="", command=user_function)
+.bind('<Button-1>', user_function)
+
+
+
+
+
+'''

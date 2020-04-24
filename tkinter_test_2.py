@@ -1,24 +1,40 @@
 from tkinter import *
 
-class Block:
-    def __init__(self, master):
-        self.user_entry = Entry(master, width = 20)
-        self.user_button = Button(master, text="Push it")
-        self.user_label = Label(master, bg="black", fg="white", width=20)
-        self.user_entry.pack()
-        self.user_button.pack()
-        self.user_label.pack()
-    def setFunc(self, func):
-        self.user_button['command'] = eval('self.' + func)
-    def sortingImput(self):
-        text = self.user_entry.get()
-        text.replace(",", " ").split(" ").sort()
-        self.user_label["text"] = "".join(text)
-    def strReverse(self):
-        text = self.user_entry.get()
-        text.split().reverse()
-        self.user_label['text'] = ''.join(text)
-
+# Инициализация главного окна
 root = Tk()
+root.title("Title")
+root.geometry("600x350+600+300")
+root.resizable(width=False, height=False)
 
-first_block = Block(root)
+# text frame for message to be coded / decoded
+message_frame = Text(root, width=63, height=9, bg="white", fg="black", wrap=WORD)
+message_frame.place(x=50, y=20)
+
+# text frame for key word
+keyword_frame = Entry(root, width=45, bg="white", fg="black")
+keyword_frame.place(x=178, y=200)
+
+puch = Button(root, text="Puch", background="#483D8B", foreground="#fff", width=12)
+puch.place(x=170, y=260)
+sova = Button(root, text="Sova", background="#483D8B", foreground="#fff", width=12)
+sova.place(x=370, y=260)
+
+root.mainloop()
+
+
+"""
+! Object declaration:
+object_name = Object(master[, parameters])
+object_name.pack()
+object_name.place(x=10, y=10)
+
+! Object: Text or Entry
+(width=x, height=y, bg="", fg="", wrap=WORD)
+.get() - возвращает
+.insert() - вставляет
+.delete() - удаляет
+
+! Object: Button
+(text="user_text", width=x, height=y, bg="", fg="", command=user_function)
+.bind('<Button-1>', user_function)
+"""
