@@ -2,18 +2,17 @@ alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i",
             "j", "k", "l", "m", "n", "o", "p", "q", "r",
             "s", "t", "u", "v", "w", "x", "y", "z"]
 
-import sys # to exit program (line 33)
 
-
+import sys # to exit program with sys.exit()
+import os # to define terminal size and color with os.system()
 
 
 def main(): # define terminal size, user menu, promt user input and call procedure according user choice
 
-    # define terminal size
-    import os
+    # define terminal size and color
     os.system("mode con cols=57 lines=35")
     os.system('COLOR 02')
-
+    os.system('cls')
     # user menu
     import shutil # to get size of the terminal (to center print output)
     columns = shutil.get_terminal_size().columns
@@ -27,20 +26,25 @@ def main(): # define terminal size, user menu, promt user input and call procedu
     print("~"*57)
 
     # promt user input...
-    print("\n")
-    action = int(input("\t> "))
-    if action == 3:
-        sys.exit("\n" + "See you next time".center(columns-2) +"\n\n\n")
-    message = input("\n\tPlease, enter message: \n\t")
-    print("\n")
-    keyword = input("\tPlease, enter keyword: \n\t")
-
-    # ...and call procedure according user choice
-    if action == 1:
-        coder(message, keyword)
-    elif action == 2:
-        decoder(message, keyword)
-
+    columns = shutil.get_terminal_size().columns
+    while True:
+        print("\n")
+        action = int(input("\t> "))
+        if action == 3:
+            sys.exit("\n" + "See you next time".center(columns-2) +"\n\n")
+        elif action < 1 or action > 3:
+            print("\n" +
+                  "Yous should choose within menu 1 - 3 options.".center(columns-2) +
+                  "\n")
+            wait = input("PRESS ENTER TO CONTINUE.".center(columns-2))
+            main()
+        else:
+            message = input("\n\tPlease, enter message: \n\t")
+            keyword = input("\n\tPlease, enter keyword: \n\t")
+            if action == 1:
+                coder(message, keyword)
+            elif action == 2:
+                decoder(message, keyword)
 
 
 # ________________________________ ________________________________ #
