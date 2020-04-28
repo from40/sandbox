@@ -1,4 +1,6 @@
 from tkinter import *
+# import tkinter as tk
+
 
 # Инициализация главного окна
 root = Tk()
